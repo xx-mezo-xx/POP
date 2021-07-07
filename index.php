@@ -29,8 +29,7 @@ $mail = strtolower($mail);
 		} elseif(strpos($mail, 'protonmail.com')){
            	return checkprotonmail($mail);
 		} elseif(strpos($mail, 'mail.com')){
-           	return checkMHR($mail);
-        } else {
+        
             return false;
             
         }
@@ -468,11 +467,7 @@ function checkprotonmail($url,$mail){
       return false;
   }
 }
-function checkMHR($mail){
-    $mail = trim($mail);
-    if(strpos($mail, ' ') or strpos($mail, '+')){
-        return false;
-    }
+
   $ch = curl_init();
   curl_setopt($ch, CURLOPT_URL,"https://onereg-email-suggest.mail.com/email-alias/availability");
   curl_setopt($ch,CURLOPT_HTTPHEADER, [
